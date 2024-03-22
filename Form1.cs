@@ -25,6 +25,16 @@ namespace lab1
 
         private void OdczytajPlik(string nazwa)
         {
+            listBoxCalosc.Items.Clear();
+            listBoxTyp.Items.Clear();
+            listBoxData.Items.Clear();
+            listBoxCzas.Items.Clear();
+            listBoxAdresWe.Items.Clear();
+            listBoxAdresWy.Items.Clear();
+            listBoxProtokol.Items.Clear();
+
+            int licznikLinij = 0;
+
             try
             {
                 using (StreamReader sr = new StreamReader(nazwa))
@@ -33,8 +43,10 @@ namespace lab1
                     while (!sr.EndOfStream)
                     {
                         string linia = sr.ReadLine();
-                        DodajDoListBoxa(linia);
+                        listBoxCalosc.Items.Add(linia);
                         PrzetwarzanieLinii(linia);
+                        licznikLinij++;
+
                     }
                 }
             }
@@ -42,29 +54,43 @@ namespace lab1
             {
                 MessageBox.Show($"Wystąpił błąd podczas odczytu pliku: {ex.Message}", "Błąd", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
+
+            toolStripStatusLabel2.Text = "Liczba załadowanych wierszy = " + licznikLinij;
         }
 
         private void PrzetwarzanieLinii(string linia)
         {
             string[] czesci = linia.Split(',');
-            if (czesci.Length < 6 || czesci.Length > 6) return;
+            if (czesci.Length != 6) return;
 
-            listBox2.Items.Add(czesci[0].Trim());
-            listBox3.Items.Add(czesci[1].Trim());
-            listBox4.Items.Add(czesci[2].Trim());
-            listBox5.Items.Add(czesci[3].Trim());
-            listBox6.Items.Add(czesci[4].Trim());
-            listBox7.Items.Add(czesci[5].Trim());
+            string typ = czesci[0].Trim();
 
+            if (typ.StartsWith("type")) return;
 
+            listBoxTyp.Items.Add(typ);
+
+            string data = czesci[1].Trim();
+            listBoxData.Items.Add(data);
+
+            string czas = czesci[2].Trim();
+            listBoxCzas.Items.Add(czas);
+
+            string adresWe = czesci[3].Trim();
+            listBoxAdresWe.Items.Add(adresWe);
+
+            string adresWy = czesci[4].Trim();
+            listBoxAdresWy.Items.Add(adresWy);
+
+            string protokol = czesci[5].Trim();
+            listBoxProtokol.Items.Add(protokol);
         }
 
-        private void DodajDoListBoxa(string linia)
+        private void OdczytajElement(string linia)
         {
-            listBox1.Items.Add(linia);
+
         }
 
-        private void button2_Click(object sender, EventArgs e)
+        private void WybieraniePliku()
         {
             using (OpenFileDialog openFileDialog = new OpenFileDialog())
             {
@@ -76,6 +102,21 @@ namespace lab1
                     textBox1.Text = openFileDialog.FileName;
                 }
             }
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            WybieraniePliku();
+        }
+
+        private void wybraćPlikToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            WybieraniePliku();
+        }
+
+        private void oProgramieToolStripMenuItem1_Click(object sender, EventArgs e)
+        {
+            
         }
     }
 }
