@@ -12,7 +12,11 @@ using System.Windows.Forms;
 namespace lab1
 {
     public partial class Form1 : Form
+
     {
+        private int licznikLinij;
+    
+    
         public Form1()
         {
             InitializeComponent();
@@ -20,11 +24,7 @@ namespace lab1
 
         private void button1_Click(object sender, EventArgs e)
         {
-            OdczytajPlik(textBox1.Text);
-        }
 
-        private void OdczytajPlik(string nazwa)
-        {
             listBoxCalosc.Items.Clear();
             listBoxTyp.Items.Clear();
             listBoxData.Items.Clear();
@@ -33,8 +33,24 @@ namespace lab1
             listBoxAdresWy.Items.Clear();
             listBoxProtokol.Items.Clear();
 
-            int licznikLinij = 0;
+            licznikLinij = 0;
 
+            if (textBox1.Text == null || textBox1.Text.Length == 0)
+            {
+                MessageBox.Show("Wybierz plik albo folder!");
+            }
+            else if (File.Exists(textBox1.Text))
+                OdczytajPlik(textBox1.Text);
+            else if (Directory.Exists(textBox1.Text))
+            {
+                string[] files = Directory.GetFiles(textBox1.Text, "*.txt");
+                foreach(String file in files)
+                    OdczytajPlik(file);
+            }
+        }
+
+        private void OdczytajPlik(string nazwa)
+        {
             try
             {
                 using (StreamReader sr = new StreamReader(nazwa))
@@ -45,8 +61,6 @@ namespace lab1
                         string linia = sr.ReadLine();
                         listBoxCalosc.Items.Add(linia);
                         PrzetwarzanieLinii(linia);
-                        licznikLinij++;
-
                     }
                 }
             }
@@ -83,12 +97,10 @@ namespace lab1
 
             string protokol = czesci[5].Trim();
             listBoxProtokol.Items.Add(protokol);
+
+            licznikLinij++;
         }
 
-        private void OdczytajElement(string linia)
-        {
-
-        }
 
         private void WybieraniePliku()
         {
@@ -100,6 +112,17 @@ namespace lab1
                 if (openFileDialog.ShowDialog() == DialogResult.OK)
                 {
                     textBox1.Text = openFileDialog.FileName;
+                }
+            }
+        }
+
+        private void WybieranieKatalogu()
+        {
+            using (FolderBrowserDialog openFolderDialog = new FolderBrowserDialog())
+            {
+                if (openFolderDialog.ShowDialog() == DialogResult.OK)
+                {
+                    textBox1.Text = openFolderDialog.SelectedPath;
                 }
             }
         }
@@ -116,7 +139,17 @@ namespace lab1
 
         private void oProgramieToolStripMenuItem1_Click(object sender, EventArgs e)
         {
-            
+            MessageBox.Show("Autorzy to Olek i Krystian", caption: "Autorzy");
+        }
+
+        private void wybraćKatalogToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            WybieranieKatalogu();
+        }
+
+        private void button3_Click(object sender, EventArgs e)
+        {
+            WybieranieKatalogu();
         }
     }
 }
