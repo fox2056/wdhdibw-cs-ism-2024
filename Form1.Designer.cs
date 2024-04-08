@@ -46,10 +46,11 @@ namespace lab1
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.plikToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.wybraćPlikToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.wybraćKatalogToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.oProgramieToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.oProgramieToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
-            this.wybraćKatalogToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.button3 = new System.Windows.Forms.Button();
+            this.wyczyśćBazęToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.statusStrip1.SuspendLayout();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
@@ -57,7 +58,7 @@ namespace lab1
             // button1
             // 
             this.button1.Location = new System.Drawing.Point(8, 29);
-            this.button1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.button1.Margin = new System.Windows.Forms.Padding(2);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(89, 29);
             this.button1.TabIndex = 0;
@@ -68,7 +69,7 @@ namespace lab1
             // button2
             // 
             this.button2.Location = new System.Drawing.Point(522, 32);
-            this.button2.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.button2.Margin = new System.Windows.Forms.Padding(2);
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(55, 30);
             this.button2.TabIndex = 1;
@@ -80,7 +81,7 @@ namespace lab1
             // 
             this.textBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
             this.textBox1.Location = new System.Drawing.Point(101, 32);
-            this.textBox1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.textBox1.Margin = new System.Windows.Forms.Padding(2);
             this.textBox1.Name = "textBox1";
             this.textBox1.Size = new System.Drawing.Size(417, 23);
             this.textBox1.TabIndex = 2;
@@ -90,7 +91,7 @@ namespace lab1
             // 
             this.listBoxCalosc.FormattingEnabled = true;
             this.listBoxCalosc.Location = new System.Drawing.Point(8, 67);
-            this.listBoxCalosc.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.listBoxCalosc.Margin = new System.Windows.Forms.Padding(2);
             this.listBoxCalosc.Name = "listBoxCalosc";
             this.listBoxCalosc.Size = new System.Drawing.Size(629, 173);
             this.listBoxCalosc.TabIndex = 3;
@@ -98,7 +99,7 @@ namespace lab1
             // progressBar1
             // 
             this.progressBar1.Location = new System.Drawing.Point(9, 243);
-            this.progressBar1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.progressBar1.Margin = new System.Windows.Forms.Padding(2);
             this.progressBar1.Name = "progressBar1";
             this.progressBar1.Size = new System.Drawing.Size(627, 19);
             this.progressBar1.TabIndex = 4;
@@ -107,7 +108,7 @@ namespace lab1
             // 
             this.listBoxTyp.FormattingEnabled = true;
             this.listBoxTyp.Location = new System.Drawing.Point(8, 268);
-            this.listBoxTyp.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.listBoxTyp.Margin = new System.Windows.Forms.Padding(2);
             this.listBoxTyp.Name = "listBoxTyp";
             this.listBoxTyp.Size = new System.Drawing.Size(81, 290);
             this.listBoxTyp.TabIndex = 5;
@@ -116,7 +117,7 @@ namespace lab1
             // 
             this.listBoxData.FormattingEnabled = true;
             this.listBoxData.Location = new System.Drawing.Point(92, 268);
-            this.listBoxData.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.listBoxData.Margin = new System.Windows.Forms.Padding(2);
             this.listBoxData.Name = "listBoxData";
             this.listBoxData.Size = new System.Drawing.Size(81, 290);
             this.listBoxData.TabIndex = 6;
@@ -125,7 +126,7 @@ namespace lab1
             // 
             this.listBoxCzas.FormattingEnabled = true;
             this.listBoxCzas.Location = new System.Drawing.Point(176, 268);
-            this.listBoxCzas.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.listBoxCzas.Margin = new System.Windows.Forms.Padding(2);
             this.listBoxCzas.Name = "listBoxCzas";
             this.listBoxCzas.Size = new System.Drawing.Size(109, 290);
             this.listBoxCzas.TabIndex = 7;
@@ -134,7 +135,7 @@ namespace lab1
             // 
             this.listBoxAdresWe.FormattingEnabled = true;
             this.listBoxAdresWe.Location = new System.Drawing.Point(288, 266);
-            this.listBoxAdresWe.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.listBoxAdresWe.Margin = new System.Windows.Forms.Padding(2);
             this.listBoxAdresWe.Name = "listBoxAdresWe";
             this.listBoxAdresWe.Size = new System.Drawing.Size(115, 290);
             this.listBoxAdresWe.TabIndex = 8;
@@ -143,7 +144,7 @@ namespace lab1
             // 
             this.listBoxAdresWy.FormattingEnabled = true;
             this.listBoxAdresWy.Location = new System.Drawing.Point(406, 266);
-            this.listBoxAdresWy.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.listBoxAdresWy.Margin = new System.Windows.Forms.Padding(2);
             this.listBoxAdresWy.Name = "listBoxAdresWy";
             this.listBoxAdresWy.Size = new System.Drawing.Size(112, 290);
             this.listBoxAdresWy.TabIndex = 9;
@@ -152,7 +153,7 @@ namespace lab1
             // 
             this.listBoxProtokol.FormattingEnabled = true;
             this.listBoxProtokol.Location = new System.Drawing.Point(521, 266);
-            this.listBoxProtokol.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.listBoxProtokol.Margin = new System.Windows.Forms.Padding(2);
             this.listBoxProtokol.Name = "listBoxProtokol";
             this.listBoxProtokol.Size = new System.Drawing.Size(116, 290);
             this.listBoxProtokol.TabIndex = 10;
@@ -206,14 +207,22 @@ namespace lab1
             // wybraćPlikToolStripMenuItem
             // 
             this.wybraćPlikToolStripMenuItem.Name = "wybraćPlikToolStripMenuItem";
-            this.wybraćPlikToolStripMenuItem.Size = new System.Drawing.Size(136, 22);
+            this.wybraćPlikToolStripMenuItem.Size = new System.Drawing.Size(156, 22);
             this.wybraćPlikToolStripMenuItem.Text = "Wybrać plik";
             this.wybraćPlikToolStripMenuItem.Click += new System.EventHandler(this.wybraćPlikToolStripMenuItem_Click);
+            // 
+            // wybraćKatalogToolStripMenuItem
+            // 
+            this.wybraćKatalogToolStripMenuItem.Name = "wybraćKatalogToolStripMenuItem";
+            this.wybraćKatalogToolStripMenuItem.Size = new System.Drawing.Size(156, 22);
+            this.wybraćKatalogToolStripMenuItem.Text = "Wybrać katalog";
+            this.wybraćKatalogToolStripMenuItem.Click += new System.EventHandler(this.wybraćKatalogToolStripMenuItem_Click);
             // 
             // oProgramieToolStripMenuItem
             // 
             this.oProgramieToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.oProgramieToolStripMenuItem1});
+            this.oProgramieToolStripMenuItem1,
+            this.wyczyśćBazęToolStripMenuItem});
             this.oProgramieToolStripMenuItem.Name = "oProgramieToolStripMenuItem";
             this.oProgramieToolStripMenuItem.Size = new System.Drawing.Size(86, 22);
             this.oProgramieToolStripMenuItem.Text = "O programie";
@@ -225,13 +234,6 @@ namespace lab1
             this.oProgramieToolStripMenuItem1.Text = "O programie";
             this.oProgramieToolStripMenuItem1.Click += new System.EventHandler(this.oProgramieToolStripMenuItem1_Click);
             // 
-            // wybraćKatalogToolStripMenuItem
-            // 
-            this.wybraćKatalogToolStripMenuItem.Name = "wybraćKatalogToolStripMenuItem";
-            this.wybraćKatalogToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
-            this.wybraćKatalogToolStripMenuItem.Text = "Wybrać katalog";
-            this.wybraćKatalogToolStripMenuItem.Click += new System.EventHandler(this.wybraćKatalogToolStripMenuItem_Click);
-            // 
             // button3
             // 
             this.button3.Location = new System.Drawing.Point(582, 32);
@@ -241,6 +243,13 @@ namespace lab1
             this.button3.Text = "Folder";
             this.button3.UseVisualStyleBackColor = true;
             this.button3.Click += new System.EventHandler(this.button3_Click);
+            // 
+            // wyczyśćBazęToolStripMenuItem
+            // 
+            this.wyczyśćBazęToolStripMenuItem.Name = "wyczyśćBazęToolStripMenuItem";
+            this.wyczyśćBazęToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.wyczyśćBazęToolStripMenuItem.Text = "Wyczyść bazę";
+            this.wyczyśćBazęToolStripMenuItem.Click += new System.EventHandler(this.wyczyśćBazęToolStripMenuItem_Click);
             // 
             // Form1
             // 
@@ -262,7 +271,7 @@ namespace lab1
             this.Controls.Add(this.button2);
             this.Controls.Add(this.button1);
             this.MainMenuStrip = this.menuStrip1;
-            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.Margin = new System.Windows.Forms.Padding(2);
             this.Name = "Form1";
             this.Text = "Lab_UZ";
             this.statusStrip1.ResumeLayout(false);
@@ -297,6 +306,7 @@ namespace lab1
         private System.Windows.Forms.ToolStripMenuItem oProgramieToolStripMenuItem1;
         private System.Windows.Forms.ToolStripMenuItem wybraćKatalogToolStripMenuItem;
         private System.Windows.Forms.Button button3;
+        private System.Windows.Forms.ToolStripMenuItem wyczyśćBazęToolStripMenuItem;
     }
 }
 

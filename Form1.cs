@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Data.SqlClient;
 using System.Drawing;
 using System.IO;
 using System.Linq;
@@ -15,8 +16,21 @@ namespace lab1
 
     {
         private int licznikLinij;
-    
-    
+        private SqlConnection connection;
+
+        private void OtworzPolaczenie()
+        {
+            String connectionString = "Data Source=(local);Initial Catalog=SuperSport;Integrated Security=True";
+            connection = new SqlConnection(connectionString);
+            connection.Open();
+        }
+
+        private void ZamknijPolaczenie()
+        {
+            connection.Close();
+        }
+
+
         public Form1()
         {
             InitializeComponent();
@@ -55,6 +69,7 @@ namespace lab1
             {
                 using (StreamReader sr = new StreamReader(nazwa))
                 {
+                    OtworzPolaczenie();
 
                     while (!sr.EndOfStream)
                     {
@@ -62,6 +77,8 @@ namespace lab1
                         listBoxCalosc.Items.Add(linia);
                         PrzetwarzanieLinii(linia);
                     }
+
+                    ZamknijPolaczenie();
                 }
             }
             catch (Exception ex)
@@ -97,6 +114,8 @@ namespace lab1
 
             string protokol = czesci[5].Trim();
             listBoxProtokol.Items.Add(protokol);
+            
+            ZapisDoBazy(typ, data, czas, adresWe, adresWy, protokol);
 
             licznikLinij++;
         }
@@ -150,6 +169,42 @@ namespace lab1
         private void button3_Click(object sender, EventArgs e)
         {
             WybieranieKatalogu();
+        }
+        
+        private void ZapisDoBazy(String typ, String data, String czas, String adresWe, String adresWy, String  protokol)
+        {
+            string commandText = "Insert into dbo.ZoneAlarmLog(Zdarzenie, Data, Czas, Source, Destination, Transport) " +
+                "values('"+ typ + "', '" + data.Replace("/", "-") + "','1900-01-01 " + czas.Substring(0, 8) +"','" + adresWe + "','" + adresWy + "','" + protokol + "');"; 
+            SqlCommand command = new SqlCommand(commandText, connection);
+            try //obsluga wyjatkow
+            {
+                int wyn = command.ExecuteNonQuery();//uruchomienie polecenia
+            }
+            catch(Exception ex)
+            {
+
+            }
+        }
+
+        private void DeleteDatabase()
+        {
+            string commandText = "delete from dbo.ZoneAlarmLog;";
+            SqlCommand command = new SqlCommand(commandText, connection);
+            try //obsluga wyjatkow
+            {
+                int wyn = command.ExecuteNonQuery();//uruchomienie polecenia
+            }
+            catch (Exception ex)
+            {
+
+            }
+        }
+
+        private void wyczyśćBazęToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            OtworzPolaczenie();
+            DeleteDatabase();
+            ZamknijPolaczenie();
         }
     }
 }

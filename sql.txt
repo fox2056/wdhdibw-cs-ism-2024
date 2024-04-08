@@ -1,0 +1,6 @@
+delete from SuperSport.dbo.ZoneAlarmLog
+
+
+SELECT count(*) 
+FROM [SuperSport].[dbo].[ZoneAlarmLog]
+
